@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private String name;
     private String author;
     private double price;

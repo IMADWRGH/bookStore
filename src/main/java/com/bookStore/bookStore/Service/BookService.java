@@ -4,8 +4,7 @@ import com.bookStore.bookStore.Model.Book;
 
 import com.bookStore.bookStore.Repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,12 +18,20 @@ public class BookService {
         this.bookRepository = bookRepository;
     }
 
-    public ResponseEntity<Book> addBook(Book book){
-        return new ResponseEntity<>(bookRepository.save(book), HttpStatus.CREATED);
+    public void addBook(Book book){
+        bookRepository.save(book);
     }
 
 
-    public List<Book> getBooks(){
+    public List<Book> getAllBooks(){
        return bookRepository.findAll();
+    }
+
+    public Book getBook(int id){
+        return bookRepository.findById(id).get();
+    }
+
+    public void deleteBook(int id){
+        bookRepository.deleteById(id);
     }
 }
